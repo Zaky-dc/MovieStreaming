@@ -8,17 +8,21 @@ export default defineConfig({
     react(),
     nodePolyfills({
       protocolImports: true,
+      globals: {
+        global: true,
+        process: true,
+        Buffer: true,
+      },
     }),
   ],
-  define: {
-    global: "globalThis",
-  },
   resolve: {
     alias: {
       process: "process/browser",
       stream: "stream-browserify",
       zlib: "browserify-zlib",
       util: "util",
+      "bittorrent-dht": "/src/utils/webtorrent-shim.js",
+      "bittorrent-lsd": "/src/utils/webtorrent-shim.js",
     },
   },
 });
