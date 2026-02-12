@@ -1,82 +1,52 @@
 {
   "channels": [
     {
-      "id": 1,
-      "name": "Big Buck Bunny (TV)",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg",
-      "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+      "id": 10,
+      "name": "TPA Angola (Direto)",
+      "logo": "https://tpaonline.ao/wp-content/uploads/2021/04/logo-tpa.png",
+      "url": "https://sgn-cdn-video.vods2africa.com/TPA-Online/index.fmp4.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 11,
+      "name": "TV Zimbo",
+      "logo": "https://upload.wikimedia.org/wikipedia/pt/2/23/Logo_TV_Zimbo.png",
+      "url": "https://sgn-cdn-video.vods2africa.com/Tv-Zimbo/index.fmp4.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 12,
+      "name": "RTP Internacional",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/RTP_Internacional_logo_2016.svg/200px-RTP_Internacional_logo_2016.svg.png",
+      "url": "https://streaming-live.rtp.pt/liverepeater/smil:rtpi.smil/playlist.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 13,
+      "name": "NASA TV (Public)",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png",
+      "url": "https://nasa-i.akamaihd.net/hls/live/253565/NASA-NTV1-Public/master.m3u8",
       "category": "tv",
       "language": "EN"
     },
     {
-      "id": 2,
-      "name": "Sintel (TV)",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sintel_poster.jpg/320px-Sintel_poster.jpg",
-      "url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      "id": 14,
+      "name": "Euronews (Português)",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Euronews_logo_2016.svg/200px-Euronews_logo_2016.svg.png",
+      "url": "https://euronews-portuguese.mmdsmart.com/pt/index.m3u8",
       "category": "tv",
-      "language": "EN"
+      "language": "PT"
     }
   ],
   "content": [
     {
-      "id": 301,
-      "title": "Cosmos Laundromat (Torrent)",
-      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Cosmos_Laundromat_-_The_First_Cycle_-_Official_Theatrical_Poster.jpg/320px-Cosmos_Laundromat_-_The_First_Cycle_-_Official_Theatrical_Poster.jpg",
-      "url": "magnet:?xt=urn:btih:c9e15763f722f23e98a29decdfae341b98d53056&dn=Cosmos+Laundromat&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com",
-      "category": "movie",
-      "language": "EN",
-      "playbackType": "original"
-    },
-    {
-      "id": 101,
-      "title": "Tears of Steel (Dublado)",
-      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Tears_of_Steel_poster.jpg/320px-Tears_of_Steel_poster.jpg",
-      "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-      "category": "movie",
-      "language": "PT",
-      "playbackType": "dubbed"
-    },
-    {
-      "id": 102,
-      "title": "Elephant's Dream (Legendado)",
-      "poster": "https://upload.wikimedia.org/wikipedia/commons/eae/Elephants_Dream_poster.jpg",
-      "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      "category": "movie",
-      "language": "EN",
-      "playbackType": "subtitled"
-    },
-    {
-      "id": 201,
-      "title": "Breaking Bad (Série - Dublado)",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/6/61/Breaking_Bad_title_card.png",
-      "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      "category": "series",
-      "language": "PT",
-      "playbackType": "dubbed"
-    },
-    {
-      "id": 202,
-      "title": "Stranger Things (Série - Legendado)",
-      "poster": "https://upload.wikimedia.org/wikipedia/en/7/78/Stranger_Things_season_4.jpg",
-      "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      "category": "series",
-      "language": "EN",
-      "playbackType": "subtitled"
-    },
-    {
-      "id": 401,
-      "title": "Night of the Living Dead (1968)",
-      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Night_of_the_Living_Dead_%281968%29_poster.jpg/320px-Night_of_the_Living_Dead_%281968%29_poster.jpg",
-      "url": "https://archive.org/download/Night_of_the_Living_Dead_1968/Night_of_the_Living_Dead_1968_512kb.mp4",
-      "category": "movie",
-      "language": "EN",
-      "playbackType": "original"
-    },
-    {
-      "id": 402,
-      "title": "Plan 9 from Outer Space (1959)",
-      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Plan_9_Alternative_poster.jpg/320px-Plan_9_Alternative_poster.jpg",
-      "url": "https://archive.org/download/Plan_9_from_Outer_Space_1959/Plan_9_from_Outer_Space_1959_512kb.mp4",
+      "id": 501,
+      "title": "Sintel (Filme Aberto)",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sintel_poster.jpg/320px-Sintel_poster.jpg",
+      "url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
       "category": "movie",
       "language": "EN",
       "playbackType": "original"
