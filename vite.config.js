@@ -1,3 +1,4 @@
+import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
@@ -21,8 +22,8 @@ export default defineConfig({
       stream: "stream-browserify",
       zlib: "browserify-zlib",
       util: "util",
-      "bittorrent-dht": "/src/utils/webtorrent-shim.js",
-      "bittorrent-lsd": "/src/utils/webtorrent-shim.js",
+      "bittorrent-dht": path.resolve(__dirname, "src/utils/webtorrent-shim.js"),
+      "bittorrent-lsd": path.resolve(__dirname, "src/utils/webtorrent-shim.js"),
     },
   },
 });
