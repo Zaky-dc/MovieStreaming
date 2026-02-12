@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "browserify-zlib": "^0.2.0",
@@ -29,7 +30,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "patch-package": "^8.0.1",
     "postcss": "^8.4.27",
+    "postinstall-postinstall": "^2.1.0",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5",
     "vite-plugin-node-polyfills": "^0.25.0"
