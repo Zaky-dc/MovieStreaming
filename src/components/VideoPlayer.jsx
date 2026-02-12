@@ -3,16 +3,14 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import WebTorrent from "webtorrent";
 
-// Ensure Buffer is available globally for WebTorrent
+// O Buffer é essencial para o WebTorrent processar pedaços do vídeo no browser
 import { Buffer } from "buffer";
-if (!window.Buffer) window.Buffer = Buffer;
+if (typeof window !== "undefined" && !window.Buffer) {
+  window.Buffer = Buffer;
+}
 
-// Initialize client outside component to persist,
-// though for this use case we might want to manage it closer to lifecycle if we want to stop seeding strictly.
-// Disable DHT as it relies on UDP which is not available in browser and causes issues with shims
-const client = new WebTorrent({
-  dht: false,
-});
+// Inicializamos o cliente WebTorrent fora do componente para evitar múltiplas instâncias
+const client = new WebTorrent({ dht: false });
 
 export const VideoPlayer = ({ options, onReady }) => {
   const videoRef = useRef(null);
@@ -21,20 +19,16 @@ export const VideoPlayer = ({ options, onReady }) => {
   const [torrentStatus, setTorrentStatus] = useState("");
 
   useEffect(() => {
-    // Basic cleanup of previous player/torrent
+    // Função de limpeza para resetar o player e parar torrents ativos ao trocar de canal
     const cleanup = () => {
-      // Dispose video.js player
       if (playerRef.current && !playerRef.current.isDisposed()) {
         playerRef.current.dispose();
         playerRef.current = null;
       }
 
-      // Stop previous torrents
-      if (client.torrents.length > 0) {
-        client.torrents.forEach((t) => t.destroy());
-      }
+      // Para todos os torrents ativos para libertar memória e banda
+      client.torrents.forEach((t) => t.destroy());
 
-      // Remove any existing video elements in container to avoid duplicates
       if (videoRef.current) {
         videoRef.current.innerHTML = "";
       }
@@ -42,100 +36,91 @@ export const VideoPlayer = ({ options, onReady }) => {
 
     cleanup();
 
-    const { sources } = options;
-    const src = sources && sources[0] ? sources[0].src : "";
+    const src = options.sources?.[0]?.src || "";
 
+    // Lógica 1: Reprodução via TORRENT (Magnet Links)
     if (src.startsWith("magnet:")) {
       setIsTorrent(true);
-      setTorrentStatus("Connecting to peers...");
+      setTorrentStatus("Procurando sementes (peers)...");
 
-      // Torrent Logic
       client.add(src, (torrent) => {
-        setTorrentStatus("Downloading Metadata...");
+        setTorrentStatus("Descarregando metadados...");
 
-        // Find the first video file
-        const file = torrent.files.find(
-          (file) =>
-            file.name.endsWith(".mp4") ||
-            file.name.endsWith(".webm") ||
-            file.name.endsWith(".mkv"),
+        // Procura o primeiro arquivo de vídeo disponível no torrent
+        const file = torrent.files.find((f) =>
+          f.name.endsWith(".mp4") || f.name.endsWith(".webm") || f.name.endsWith(".mkv")
         );
 
         if (file) {
           setTorrentStatus(`Streaming: ${file.name}`);
-
-          // Create video element for torrent
+          
           const videoElement = document.createElement("video");
           videoElement.className = "w-full h-full";
           videoElement.controls = true;
           videoElement.autoplay = options.autoplay;
 
           if (videoRef.current) {
-            videoRef.current.innerHTML = ""; // Clear container
             videoRef.current.appendChild(videoElement);
-            // Render to the video element
+            // O WebTorrent renderiza o stream diretamente no elemento <video>
             file.renderTo(videoElement, { autoplay: options.autoplay });
           }
         } else {
-          setTorrentStatus("No playable video file found in torrent.");
+          setTorrentStatus("Erro: Nenhum ficheiro de vídeo encontrado.");
         }
       });
 
-      // Handle torrent errors
       client.on("error", (err) => {
-        setTorrentStatus(`Error: ${err.message}`);
+        setTorrentStatus(`Erro no Torrent: ${err.message}`);
       });
+
     } else {
+      // Lógica 2: Reprodução via VIDEO.JS (Canais M3U8 e MP4)
       setIsTorrent(false);
       setTorrentStatus("");
 
-      // Video.js Logic
       if (videoRef.current) {
-        videoRef.current.innerHTML = "";
-
         const videoElement = document.createElement("video-js");
-        videoElement.classList.add("vjs-big-play-centered");
+        videoElement.classList.add("vjs-big-play-centered", "vjs-theme-city");
         videoRef.current.appendChild(videoElement);
 
         const player = (playerRef.current = videojs(
           videoElement,
-          options,
-          () => {
-            videojs.log("player is ready");
-            onReady && onReady(player);
+          {
+            ...options,
+            html5: {
+              vhs: {
+                overrideNative: true, // Garante que o motor HLS funcione em todos os browsers
+                allowSeeksWithinUnsafeLiveWindow: true,
+              },
+            },
           },
+          () => {
+            console.log("Player de vídeo/TV pronto!");
+            onReady && onReady(player);
+          }
         ));
+
+        // Listener para erros de carregamento (CORS ou links offline)
+        player.on("error", () => {
+          console.error("Erro no carregamento do stream. Verifica o link ou permissões CORS.");
+        });
       }
     }
 
-    return () => {
-      // Cleanup on effect dependency change is handled by the initial cleanup call of the next run
-      // But we can also do partial cleanup here if needed.
-    };
+    return cleanup;
   }, [options]);
 
-  // Clean up on unmount
-  useEffect(() => {
-    return () => {
-      if (playerRef.current && !playerRef.current.isDisposed()) {
-        playerRef.current.dispose();
-      }
-      if (client.torrents.length > 0) {
-        client.torrents.forEach((t) => t.destroy());
-      }
-    };
-  }, []);
-
   return (
-    <div className="w-full h-full relative group">
-      <div
-        ref={videoRef}
-        className="w-full h-full rounded-lg overflow-hidden shadow-2xl bg-black"
-      />
+    <div className="w-full h-full relative bg-black rounded-xl shadow-inner group">
+      {/* Container onde o player será injetado */}
+      <div ref={videoRef} className="w-full h-full" />
 
-      {isTorrent && torrentStatus && (
-        <div className="absolute top-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded pointer-events-none z-10 font-mono">
-          {torrentStatus}
+      {/* Overlay de Status para Torrents */}
+      {isTorrent && (
+        <div className="absolute top-4 left-4 z-20">
+          <div className="bg-red-600/90 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest animate-pulse">
+            {torrentStatus}
+          </div>
         </div>
       )}
     </div>
