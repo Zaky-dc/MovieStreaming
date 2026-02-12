@@ -1,20 +1,44 @@
 {
   "channels": [
     {
-      "id": 1,
-      "name": "Big Buck Bunny (TV)",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg",
-      "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+      "id": 10,
+      "name": "TPA Angola (Direto)",
+      "logo": "https://tpaonline.ao/wp-content/uploads/2021/04/logo-tpa.png",
+      "url": "https://sgn-cdn-video.vods2africa.com/TPA-Online/index.fmp4.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 11,
+      "name": "TV Zimbo",
+      "logo": "https://upload.wikimedia.org/wikipedia/pt/2/23/Logo_TV_Zimbo.png",
+      "url": "https://sgn-cdn-video.vods2africa.com/Tv-Zimbo/index.fmp4.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 12,
+      "name": "RTP Internacional",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/RTP_Internacional_logo_2016.svg/200px-RTP_Internacional_logo_2016.svg.png",
+      "url": "https://streaming-live.rtp.pt/liverepeater/smil:rtpi.smil/playlist.m3u8",
+      "category": "tv",
+      "language": "PT"
+    },
+    {
+      "id": 13,
+      "name": "NASA TV (Public)",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/200px-NASA_logo.svg.png",
+      "url": "https://nasa-i.akamaihd.net/hls/live/253565/NASA-NTV1-Public/master.m3u8",
       "category": "tv",
       "language": "EN"
     },
     {
-      "id": 2,
-      "name": "Sintel (TV)",
-      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sintel_poster.jpg/320px-Sintel_poster.jpg",
-      "url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      "id": 14,
+      "name": "Euronews (Português)",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Euronews_logo_2016.svg/200px-Euronews_logo_2016.svg.png",
+      "url": "https://euronews-portuguese.mmdsmart.com/pt/index.m3u8",
       "category": "tv",
-      "language": "EN"
+      "language": "PT"
     }
   ],
   "content": [
@@ -28,6 +52,47 @@
       "language": "EN",
       "playbackType": "original",
       "isTorrent": true
+    },
+    {
+      "id": 501,
+      "title": "Sintel (Filme Aberto)",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sintel_poster.jpg/320px-Sintel_poster.jpg",
+      "url": "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      "category": "movie",
+      "genre": "Animation",
+      "language": "EN",
+      "playbackType": "original"
+    },
+    {
+      "id": 601,
+      "title": "Terror em Silent Hill: Regresso Para o Inferno (2026)",
+      "poster": "https://baixafilmestorrenthd.com/wp-content/uploads/2026/01/mRbdOe5vMnY3HXxLnWgRFJHbCPs.jpg",
+      "url": "magnet:?xt=urn:btih:1b8bc80803b144df8377832204496f9ec822534c&dn=Return+To+Silent+Hill",
+      "category": "movie",
+      "genre": "Horror",
+      "language": "PT",
+      "playbackType": "original",
+      "isTorrent": true
+    },
+    {
+      "id": 602,
+      "title": "O Primata",
+      "poster": "https://verfilmeseries.com/wp-content/uploads/2026/02/d5Grn6lkqQTZSeOcHZCz2utW58Q-200x300.jpg",
+      "url": "https://verfilmeseries.com/filme/o-primata-9231706411/",
+      "category": "movie",
+      "genre": "Action",
+      "language": "PT",
+      "playbackType": "original"
+    },
+    {
+      "id": 603,
+      "title": "Final Destination (2000)",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-eFr8-mIuCJh-yBHRDvtPWabtJdzsakZWw&s",
+      "url": "https://drive.google.com/file/d/0B-pxQwOjtZ8gMzJRRWxQWnAxTTA/view?resourcekey=0-Wit7dQgZtlIjc4x1aQTVRg",
+      "category": "movie",
+      "genre": "Horror",
+      "language": "PT",
+      "playbackType": "original"
     },
     {
       "id": 101,
@@ -89,5 +154,24 @@
       "language": "EN",
       "playbackType": "original"
     }
+    {
+  "id": 602,
+  "title": "O Primata",
+  "poster": "https://verfilmeseries.com/wp-content/uploads/2026/02/d5Grn6lkqQTZSeOcHZCz2utW58Q-200x300.jpg",
+  "url": "https://verfilmeseries.com/filme/o-primata-9231706411/",
+  "category": "movie",
+  "language": "PT",
+  "playbackType": "original"
+},
+     {
+  "id": 603,
+  "title": "Final Destination (2000)",
+  "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP-eFr8-mIuCJh-yBHRDvtPWabtJdzsakZWw&s",
+  "url": "https://drive.google.com/file/d/0B-pxQwOjtZ8gMzJRRWxQWnAxTTA/view?resourcekey=0-Wit7dQgZtlIjc4x1aQTVRg",
+  "category": "movie",
+  "language": "PT",
+  "playbackType": "original"
+}
+>>>>>>> daaa4055cac0503c91f5c5be47d2b295c47151ce
   ]
 }
